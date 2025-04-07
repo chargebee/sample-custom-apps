@@ -1,0 +1,25 @@
+{
+  "name": "my-second-node-app",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
+    "lint": "eslint . --fix"
+  },
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "keywords": [
+    "marketplace",
+    "cli"
+  ],
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^9.23.0",
+    "jest": "^29.7.0"
+  }
+}

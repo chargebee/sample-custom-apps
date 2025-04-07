@@ -1,0 +1,18 @@
+{
+  "name": "my-second-node-app",
+  "displayName": "my-second-node-app",
+  "description": "Replace with some useful description.",
+  "version": "1.0.0",
+  "modules": [
+    "billing"
+  ],
+  "runtime": {
+    "type": "node",
+    "version": "22"
+  },
+  "eventHandlers": {
+    "customer_created": "handlers/createCustomerHandler",
+    "customer_changed": "handlers/updateCustomerHandler"
+  },
+  "env": {}
+}
