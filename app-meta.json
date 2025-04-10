@@ -2,7 +2,6 @@
   "name": "my-second-node-app",
   "displayName": "my-second-node-app",
   "description": "Replace with some useful description.",
-  "version": "1.0.0",
   "modules": [
     "billing"
   ],
