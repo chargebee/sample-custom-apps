@@ -10,10 +10,7 @@
     "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": ["*", "types.d.ts"]
-    }
+    "baseUrl": "."
   },
   "include": [
     "**/*.mjs",

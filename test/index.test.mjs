@@ -4,7 +4,9 @@ import { parseEvent, validateEvent } from "../internal/utility.mjs";
 import { jest } from "@jest/globals";
 
 // Mock console.log and console.error
+// @ts-ignore
 const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+// @ts-ignore
 const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 
 // Mock appMeta
@@ -49,6 +51,7 @@ describe("handler", () => {
       ],
     };
 
+    // @ts-ignore
     const result = await handler(mockEvent);
     
     expect(console.log).toHaveBeenCalledWith("EventSource: aws:sns");
@@ -276,6 +279,7 @@ describe("utility functions", () => {
       webhooks: []
     };
 
+    // @ts-ignore
     const result = eventRecord.event_type;
     
     expect(result).toBeUndefined();
@@ -301,6 +305,7 @@ describe("utility functions", () => {
   });
 
   test("validateEventRecord should return false for null record", () => {
+    // @ts-ignore
     const result = validateEvent(null);
     
     expect(result).toBe(false);
@@ -318,6 +323,7 @@ describe("utility functions", () => {
       webhooks: []
     };
 
+    // @ts-ignore
     const result = validateEvent(eventRecord);
     
     expect(result).toBe(false);
@@ -335,6 +341,7 @@ describe("utility functions", () => {
       webhooks: []
     };
 
+    // @ts-ignore
     const result = validateEvent(eventRecord);
     
     expect(result).toBe(false);
@@ -352,6 +359,7 @@ describe("utility functions", () => {
       webhooks: []
     };
 
+    // @ts-ignore
     const result = validateEvent(eventRecord);
     
     expect(result).toBe(false);
