@@ -1,5 +1,5 @@
 import appMeta from "./app-meta.json" with { type: 'json' };
-import { parseLambdaEvent, getEventType, validateEventRecord } from "./internal/utility.mjs";
+import { parseEvent, validateEvent } from "./internal/utility.mjs";
 
 /**
  * Main event handler for processing Chargebee marketplace events
@@ -24,7 +24,7 @@ export const handler = async (event) => {
   try {
     // Step 1: Parse event and extract Chargebee event record
     // This automatically detects the event source and parses accordingly
-    const eventRecord = parseLambdaEvent(event);
+    const eventRecord = parseEvent(event);
     
     if (!eventRecord) {
       console.error('No event records found in incoming event');
@@ -33,13 +33,13 @@ export const handler = async (event) => {
     
     // Step 2: Validate the parsed Chargebee event record
     // Ensures we have all required fields before processing
-    if (!validateEventRecord(eventRecord)) {
+    if (!validateEvent(eventRecord)) {
       console.error('Invalid Chargebee event record received - missing required fields');
       return;
     }
     
     // Step 3: Extract event type for routing
-    const eventType = getEventType(eventRecord);
+    const eventType = eventRecord.event_type;
     if (!eventType) {
       console.error('Could not extract event type from Chargebee event');
       return;

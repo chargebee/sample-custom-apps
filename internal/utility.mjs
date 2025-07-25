@@ -11,7 +11,7 @@
  * @param {Object} event - Event object containing service records
  * @returns {import('../types.d.ts').EventRecord|null} First parsed event record or null if none found
  */
-export const parseLambdaEvent = (event) => {
+export const parseEvent = (event) => {
   // @ts-ignore
   const { Records } = event;
   
@@ -68,20 +68,11 @@ const parseSNSRecord = (snsRecord) => {
 };
 
 /**
- * Extract event type from parsed event record
- * @param {import('../types.d.ts').EventRecord} eventRecord - Parsed event record
- * @returns {string|undefined} Event type or undefined if not found
- */
-export const getEventType = (eventRecord) => {
-  return eventRecord.event_type;
-};
-
-/**
  * Validate if event record has required fields
  * @param {import('../types.d.ts').EventRecord} eventRecord - Parsed event record
  * @returns {boolean} Whether the event record is valid
  */
-export const validateEventRecord = (eventRecord) => {
+export const validateEvent = (eventRecord) => {
   return !!(eventRecord && 
          eventRecord.id && 
          eventRecord.event_type && 
