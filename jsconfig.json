@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*", "types.d.ts"]
+    }
+  },
+  "include": [
+    "**/*.mjs",
+    "**/*.js",
+    "types.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+} 

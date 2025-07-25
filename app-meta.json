@@ -1,0 +1,13 @@
+{
+  "name": "third-party-webhook-app",
+  "displayName": "third-party-webhook-app",
+  "description": "Replace with some useful description.",
+  "runtime": {
+    "type": "node",
+    "version": "22"
+  },
+  "eventHandlers": {
+    "customer_created": "handlers/customerCreated"
+  },
+  "env": {}
+}

@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+out/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Coverage reports
+.cache/
+coverage/
