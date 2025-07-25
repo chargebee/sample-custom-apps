@@ -1,7 +1,7 @@
-// @ts-ignore
+
 import axios from "axios";
 
-export const handle = async (/** @type {import("types.js").EventRecord} */ event) => {
+export const handle = async (/** @type {import('../types.d.ts').EventRecord} */ event) => {
   try {
     // Make a POST request using axios
     await axios.post('https://eoivy770x9bk27f.m.pipedream.net', event, {
