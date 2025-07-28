@@ -1,10 +1,12 @@
 import { handler } from "../index.mjs";
-import { parseLambdaEvent, getEventType, validateEventRecord } from "../internal/utility.mjs";
+import { parseEvent, validateEvent } from "../internal/utility.mjs";
 // @ts-ignore
 import { jest } from "@jest/globals";
 
 // Mock console.log and console.error
+// @ts-ignore
 const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+// @ts-ignore
 const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 
 // Mock appMeta
@@ -49,6 +51,7 @@ describe("handler", () => {
       ],
     };
 
+    // @ts-ignore
     const result = await handler(mockEvent);
     
     expect(console.log).toHaveBeenCalledWith("EventSource: aws:sns");
@@ -205,7 +208,7 @@ describe("utility functions", () => {
       ],
     };
 
-    const result = parseLambdaEvent(mockEvent);
+    const result = parseEvent(mockEvent);
     
     expect(result).toEqual({
       id: "evt_123",
@@ -225,7 +228,7 @@ describe("utility functions", () => {
       Records: [],
     };
 
-    const result = parseLambdaEvent(mockEvent);
+    const result = parseEvent(mockEvent);
     
     expect(result).toBeNull();
   });
@@ -243,10 +246,10 @@ describe("utility functions", () => {
       ],
     };
 
-    expect(() => parseLambdaEvent(mockEvent)).toThrow("Unsupported EventSource: aws:sqs");
+    expect(() => parseEvent(mockEvent)).toThrow("Unsupported EventSource: aws:sqs");
   });
 
-  test("getEventType should extract event type correctly", () => {
+  test("eventRecord.event_type should extract event type correctly", () => {
     const eventRecord = {
       id: "evt_123",
       event_type: "customer_created",
@@ -259,12 +262,12 @@ describe("utility functions", () => {
       webhooks: []
     };
 
-    const result = getEventType(eventRecord);
+    const result = eventRecord.event_type;
     
     expect(result).toBe("customer_created");
   });
 
-  test("getEventType should return undefined for missing event type", () => {
+  test("eventRecord.event_type should return undefined for missing event type", () => {
     const eventRecord = {
       id: "evt_123",
       content: { customer: { id: "cust_123" } },
@@ -276,7 +279,8 @@ describe("utility functions", () => {
       webhooks: []
     };
 
-    const result = getEventType(eventRecord);
+    // @ts-ignore
+    const result = eventRecord.event_type;
     
     expect(result).toBeUndefined();
   });
@@ -295,13 +299,14 @@ describe("utility functions", () => {
     };
 
     // @ts-ignore
-    const result = validateEventRecord(eventRecord);
+    const result = validateEvent(eventRecord);
     
     expect(result).toBe(true);
   });
 
   test("validateEventRecord should return false for null record", () => {
-    const result = validateEventRecord(null);
+    // @ts-ignore
+    const result = validateEvent(null);
     
     expect(result).toBe(false);
   });
@@ -318,7 +323,8 @@ describe("utility functions", () => {
       webhooks: []
     };
 
-    const result = validateEventRecord(eventRecord);
+    // @ts-ignore
+    const result = validateEvent(eventRecord);
     
     expect(result).toBe(false);
   });
@@ -335,7 +341,8 @@ describe("utility functions", () => {
       webhooks: []
     };
 
-    const result = validateEventRecord(eventRecord);
+    // @ts-ignore
+    const result = validateEvent(eventRecord);
     
     expect(result).toBe(false);
   });
@@ -352,7 +359,8 @@ describe("utility functions", () => {
       webhooks: []
     };
 
-    const result = validateEventRecord(eventRecord);
+    // @ts-ignore
+    const result = validateEvent(eventRecord);
     
     expect(result).toBe(false);
   });
