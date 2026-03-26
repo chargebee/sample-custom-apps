@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"chargebee": "3.0.0"
+	},
+	"events": {
+		"invoice_updated": {
+			"handler": "invoiceUpdatedHandler"
+		}
+	}
+}
