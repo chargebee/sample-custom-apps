@@ -1,0 +1,4 @@
+{
+	"crm_webhook_url": "https://api.hubapi.com/crm/v3/objects/contacts",
+	"crm_auth_token": "REPLACE_WITH_YOUR_HUBSPOT_PRIVATE_APP_TOKEN"
+}
