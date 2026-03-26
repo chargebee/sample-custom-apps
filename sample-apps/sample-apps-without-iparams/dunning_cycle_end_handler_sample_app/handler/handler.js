@@ -9,7 +9,7 @@ const { handleInvoiceUpdated } = require('./dunningInvoiceUpdated');
 module.exports = {
 	/**
 	 * Must match `manifest.json` → `events.invoice_updated.handler`.
-	 * @param {import('../types/types.d.ts').HandlerPayload} payload
+	 * @param {import('../types/types').HandlerPayload} payload
 	 */
 	invoiceUpdatedHandler: async function (payload) {
 		try {

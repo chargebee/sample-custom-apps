@@ -12,7 +12,7 @@ const { createChargebeeClient } = require('./chargebeeClient');
 const DUNNING_EXHAUSTED_ACTION = /** @type {'pause' | 'cancel'} */ ('cancel');
 
 /**
- * @param {import('../types/types.d.ts').HandlerPayload} payload
+ * @param {import('../types/types').HandlerPayload} payload
  */
 async function handleInvoiceUpdated(payload) {
 	const x = /** @type {any} */ (payload.event.content);
