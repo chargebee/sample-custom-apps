@@ -6,7 +6,7 @@
 const Chargebee = /** @type {new (c: object) => object} */ (/** @type {unknown} */ (require('chargebee')));
 
 /**
- * Hardcoded as this app is created using `serverless-node-starter-app`. For a merchant-configurable API host, use `serverless-node-starter-app-with-iparams` and read the value from iparams.
+ * Hardcoded as this app is created using `serverless-node-starter-app`. For configurable API host, use `serverless-node-starter-app-with-iparams` and read the value from iparams.
  */
 const API_HOST_SUFFIX = '.devcb.in';
 

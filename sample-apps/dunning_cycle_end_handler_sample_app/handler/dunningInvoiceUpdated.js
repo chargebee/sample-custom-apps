@@ -1,13 +1,7 @@
 'use strict';
 
 /**
- * Sample: react to fully exhausted invoice dunning by pausing or cancelling the subscription (Chargebee API).
- *
- * Flow:
- * 1. `invoice_updated` fires often; we only care when dunning finished without payment (`dunning_status === 'exhausted'`).
- * 2. We need a subscription id from the webhook (`invoice.subscription_id` or `subscription.id`).
- * 3. We call the Chargebee SDK (see `chargebeeClient.js` for site / API key / host). This sample does not use the API response body.
- *    Pause and cancel both use `immediately` (`pause_option` / `cancel_option`).
+ * Reacts to fully exhausted invoice dunning by pausing or cancelling the subscription (Chargebee API).
  */
 
 const { createChargebeeClient } = require('./chargebeeClient');
@@ -35,9 +29,8 @@ async function handleInvoiceUpdated(payload) {
 		throw new Error('no subscription_id in event');
 	}
 
-	const chargebee = /** @type {any} */ (createChargebeeClient());
+	const chargebee = createChargebeeClient();
 
-	// Chargebee SDK awaits live in helpers; `console.log` stays here after `await` so local `apps run` keeps formatted logs.
 	if (DUNNING_EXHAUSTED_ACTION === 'pause') {
 		await pauseSubscription(chargebee, subId);
 		console.log('Subscription paused successfully');
