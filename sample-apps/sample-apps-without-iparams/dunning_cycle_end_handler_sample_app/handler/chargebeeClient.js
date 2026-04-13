@@ -3,7 +3,7 @@
 /**
  * Chargebee Node SDK client for this app.
  */
-const Chargebee = /** @type {new (c: object) => object} */ (/** @type {unknown} */ (require('chargebee')));
+const Chargebee = require('chargebee');
 
 /**
  * Hardcoded as this app is created using `serverless-node-starter-app`. For configurable API host, use `serverless-node-starter-app-with-iparams` and read the value from iparams.
