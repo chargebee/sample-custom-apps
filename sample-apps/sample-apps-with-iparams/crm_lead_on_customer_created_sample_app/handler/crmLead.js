@@ -4,7 +4,7 @@
  * @param {import('../types/types.js').HandlerPayload} payload
  */
 async function postLeadToCrm(payload) {
-	const iparams = /** @type {any} */ (payload.iparams);
+	const iparams = payload.iparams;
 	const url = iparams.crm_webhook_url;
 	if (typeof url !== 'string' || !url.trim()) {
 		throw new Error('crm_webhook_url iparam is required');
@@ -13,7 +13,7 @@ async function postLeadToCrm(payload) {
 	if (typeof token !== 'string' || !token.trim()) {
 		throw new Error('crm_auth_token iparam is required for HubSpot API');
 	}
-	const customerData = /** @type {any} */ (payload.event.content)?.customer;
+	const customerData = payload.event.content?.customer;
 	const customer = customerData && typeof customerData === 'object' ? customerData : {};
 	const body = {
 		properties: {
@@ -25,7 +25,7 @@ async function postLeadToCrm(payload) {
 			lifecyclestage: 'lead',
 		},
 	};
-	/** @type {any} */
+
 	const headers = {
 		'Authorization': `Bearer ${token.trim()}`,
 		'Content-Type': 'application/json'
