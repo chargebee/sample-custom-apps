@@ -1,9 +1,8 @@
 'use strict';
 
-// @ts-ignore - sample app dependency is installed at runtime from manifest.json
-const Chargebee = /** @type {new (c: object) => object} */ (/** @type {unknown} */ (require('chargebee')));
+// Chargebee is declared in manifest.json and installed for the handler runtime.
+const Chargebee = require('chargebee');
 
-/** @param {string} hostSuffix */
 function createChargebeeClient(hostSuffix) {
 	const site = process.env['MKPLC_SITE_DOMAIN'];
 	const apiKey = process.env['MKPLC_CB_READ_WRITE_API'];
@@ -15,9 +14,9 @@ function createChargebeeClient(hostSuffix) {
  * @param {import('../types/types.d.ts').HandlerPayload} payload
  */
 async function scheduleAdvanceInvoice(payload) {
-	const eventContent = /** @type {any} */ (payload.event.content);
-	const iparams = /** @type {any} */ (payload.iparams);
-	const chargebee = /** @type {any} */ (createChargebeeClient(iparams.api_host_suffix));
+	const eventContent = payload.event.content;
+	const iparams = payload.iparams;
+	const chargebee = createChargebeeClient(iparams.api_host_suffix);
 	const selectedScheduleType = iparams.schedule_type;
 
 	let params;
@@ -49,7 +48,6 @@ async function scheduleAdvanceInvoice(payload) {
 	console.log('Advance invoice scheduled:', JSON.stringify(result, null, 2));
 }
 
-/** @param {string} ymd */
 function toUnixUtc(ymd) {
 	const [y, m, d] = ymd.split('-').map((x) => Number.parseInt(x, 10));
 	if (!y || !m || !d) throw new Error('Invalid date');

@@ -12,7 +12,7 @@ module.exports = {
 		try {
 			await scheduleAdvanceInvoice(payload);
 		} catch (error) {
-			throw new Error((/** @type {Error} */ (error)).message);
+			throw new Error(error.message);
 		}
 	},
 };
