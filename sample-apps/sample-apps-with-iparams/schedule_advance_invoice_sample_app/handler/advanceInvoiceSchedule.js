@@ -1,14 +1,6 @@
 'use strict';
 
-// Chargebee is declared in manifest.json and installed for the handler runtime.
-const Chargebee = require('chargebee');
-
-function createChargebeeClient(hostSuffix) {
-	const site = process.env['MKPLC_SITE_DOMAIN'];
-	const apiKey = process.env['MKPLC_CB_READ_WRITE_API'];
-	if (!site || !apiKey) throw new Error('Missing MKPLC_SITE_DOMAIN or MKPLC_CB_READ_WRITE_API');
-	return new Chargebee({ site, apiKey, hostSuffix });
-}
+const { createChargebeeClient } = require('./chargebeeClient');
 
 /**
  * @param {import('../types/types.d.ts').HandlerPayload} payload
@@ -18,6 +10,10 @@ async function scheduleAdvanceInvoice(payload) {
 	const iparams = payload.iparams;
 	const chargebee = createChargebeeClient(iparams.api_host_suffix);
 	const selectedScheduleType = iparams.schedule_type;
+
+	if (selectedScheduleType === 'specific' && !iparams.specific_invoice_date) {
+		throw new Error('specific_invoice_date is required when schedule_type is specific');
+	}
 
 	let params;
 	if (selectedScheduleType === 'fixed') {
@@ -30,9 +26,6 @@ async function scheduleAdvanceInvoice(payload) {
 			},
 		};
 	} else if (selectedScheduleType === 'specific') {
-		if (!iparams.specific_invoice_date) {
-			throw new Error('specific_invoice_date is required when schedule_type is specific');
-		}
 		params = {
 			schedule_type: 'specific_dates',
 			specific_dates_schedule: [
@@ -44,7 +37,22 @@ async function scheduleAdvanceInvoice(payload) {
 		};
 	}
 
-	const result = await chargebee.subscription.chargeFutureRenewals(eventContent.subscription.id, params);
+	let result;
+	try {
+		result = await chargebee.subscription.chargeFutureRenewals(eventContent.subscription.id, params);
+	} catch (err) {
+		const status = err.http_status_code;
+		if (typeof status === 'number' && status >= 400 && status < 500) {
+			console.error('Chargebee API 4xx (advance invoice not scheduled):', {
+				http_status_code: status,
+				api_error_code: err.api_error_code,
+				message: err.message,
+				subscription_id: eventContent.subscription.id,
+			});
+			return;
+		}
+		throw err;
+	}
 	console.log('Advance invoice scheduled:', JSON.stringify(result, null, 2));
 }
 
