@@ -1,0 +1,16 @@
+[
+	{
+		"name": "crm_webhook_url",
+		"display_name": "HubSpot contacts API URL",
+		"description": "Example: https://api.hubapi.com/crm/v3/objects/contacts",
+		"type": "URL",
+		"required": true
+	},
+	{
+		"name": "crm_auth_token",
+		"display_name": "HubSpot private app token",
+		"description": "Sent as Authorization: Bearer <token> to HubSpot contacts API.",
+		"type": "SECRET",
+		"required": true
+	}
+]

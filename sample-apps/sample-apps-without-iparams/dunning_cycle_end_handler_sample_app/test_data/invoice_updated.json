@@ -1,0 +1,40 @@
+{
+	"api_version": "v2",
+	"content": {
+		"customer": {
+			"email": "johndoe@example.com",
+			"first_name": "John",
+			"id": "AzqUAXUuVzllT3Zr",
+			"last_name": "Doe",
+			"object": "customer"
+		},
+		"invoice": {
+			"amount_due": 9900,
+			"currency_code": "USD",
+			"customer_id": "AzqUAXUuVzllT3Zr",
+			"dunning_status": "exhausted",
+			"id": "93",
+			"object": "invoice",
+			"status": "not_paid",
+			"subscription_id": "15tRUkVEtw9fA1JX"
+		},
+		"subscription": {
+			"id": "15tRUkVEtw9fA1JX",
+			"object": "subscription",
+			"status": "active"
+		}
+	},
+	"event_type": "invoice_updated",
+	"id": "ev_sample_invoice_updated_dunning",
+	"object": "event",
+	"occurred_at": 1755783294,
+	"source": "scheduled_jobs",
+	"webhook_status": "scheduled",
+	"webhooks": [
+		{
+			"id": "whv2_sample",
+			"object": "webhook",
+			"webhook_status": "scheduled"
+		}
+	]
+}

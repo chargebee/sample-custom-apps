@@ -1,20 +1,13 @@
 # Node modules
 node_modules/
+package-lock.json
+package.json
 
 # Logs
-npm-debug.log*
-yarn-error.log
-pnpm-debug.log
-
-# Env files
-.env
-.env.local
-.env.*.local
+cb.log
 
 # Build output
 dist/
-build/
-out/
 
 # OS-specific files
 .DS_Store

@@ -1,0 +1,51 @@
+{
+    "api_version": "v2",
+    "content": {
+        "customer": {
+            "allow_direct_debit": false,
+            "auto_collection": "on",
+            "billing_address": {
+                "country": "US",
+                "object": "billing_address",
+                "validation_status": "not_validated"
+            },
+            "card_status": "no_card",
+            "channel": "web",
+            "company": "Example",
+            "created_at": 1755783294,
+            "created_from_ip": "54.88.235.200",
+            "deleted": false,
+            "email": "johnddoe8@example.com",
+            "excess_payments": 0,
+            "first_name": "John",
+            "id": "AzqUAXUuVzllT3Zr",
+            "last_name": "Doe",
+            "mrr": 0,
+            "net_term_days": 0,
+            "object": "customer",
+            "phone": "123 456 7890",
+            "pii_cleared": "active",
+            "preferred_currency_code": "USD",
+            "promotional_credits": 0,
+            "refundable_credits": 0,
+            "resource_version": 1755783294193,
+            "taxability": "taxable",
+            "unbilled_charges": 0,
+            "updated_at": 1755783294
+        }
+    },
+    "event_type": "customer_created",
+    "id": "ev_AzqUAXUuVzlmf3Zs",
+    "object": "event",
+    "occurred_at": 1755783294,
+    "source": "admin_console",
+    "user": "foo@bar.com",
+    "webhook_status": "scheduled",
+    "webhooks": [
+        {
+            "id": "whv2_169zTyUkn2tgg2fOQ",
+            "object": "webhook",
+            "webhook_status": "scheduled"
+        }
+    ]
+}
