@@ -1,0 +1,7 @@
+{
+	"events": {
+		"customer_created": {
+			"handler": "customerCreatedHandler"
+		}
+	}
+}
