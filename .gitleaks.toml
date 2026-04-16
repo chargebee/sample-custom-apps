@@ -1,0 +1,9 @@
+title = "Local gitleaks overrides"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow known test key in sample README"
+paths = ["sample-apps/sample-apps-with-iparams/README.md"]
+regexes = ["test-api-key-12345"]
