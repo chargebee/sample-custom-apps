@@ -1,0 +1,36 @@
+name: Common PR Lint
+
+on:
+  pull_request:
+    branches: [master, main,staging, dev,develop]
+    types: [ready_for_review, reopened, review_requested, review_request_removed, opened, edited]
+
+jobs:
+  # Uncomment the block below to enable custom lint checks (e.g. link check) via Danger.
+  # The dangerfile at .github/workflows/pr-lint.js runs when this job is enabled.
+  # build:
+  #   runs-on: cicd-large-runner
+  #   steps:
+  #     - uses: actions/checkout@v2
+      
+  #     - name: Use Node.js 10.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 10.x
+  #     - name: install yarn
+  #       run: npm install -g yarn
+  #     - name: yarn babel
+  #       run: yarn add -D @babel/plugin-transform-flow-strip-types
+  #     - run: yarn add -D @babel/core
+
+  #     - name: Danger
+  #       uses: danger/danger-js@9.1.6
+  #       with:
+  #         args : '--dangerfile .github/workflows/pr-lint.js'
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  pr-lint:
+    name: Common PR Lint Checks
+    if: github.base_ref == 'main' || github.base_ref == 'master'
+    uses: chargebee/cb-cicd-pipelines/.github/workflows/pr-lint.yml@main
+    secrets: inherit
