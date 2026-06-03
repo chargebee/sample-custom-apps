@@ -1,0 +1,7 @@
+{
+  "events": {
+    "invoice_generated": {
+      "handler": "invoiceGeneratedHandler"
+    }
+  }
+}

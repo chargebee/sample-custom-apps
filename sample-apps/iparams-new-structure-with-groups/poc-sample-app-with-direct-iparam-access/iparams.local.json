@@ -1,0 +1,5 @@
+{
+	"processing_fee_percentage": 3,
+	"processing_fee_limit": 10000,
+	"late_payment_fee_percentage": 1.5
+}

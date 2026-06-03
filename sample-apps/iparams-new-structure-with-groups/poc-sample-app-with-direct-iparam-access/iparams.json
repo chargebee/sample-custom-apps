@@ -1,0 +1,44 @@
+{
+	"installation_parameters": {
+		"sections": [
+			{
+				"name": "processing_fee_configuration",
+				"display_name": "Processing Fee Configuration",
+				"description": "Complete the fields below to proceed.",
+				"parameters": [
+					{
+						"name": "processing_fee_percentage",
+						"display_name": "Processing Fee (%)",
+						"description": "Percentage fee applied to each transaction",
+						"type": "NUMBER",
+						"default": "3",
+						"required": true
+					},
+					{
+						"name": "processing_fee_limit",
+						"display_name": "Processing Fee Limit",
+						"description": "Maximum processing fee amount to charge (in minor currency units, e.g. cents)",
+						"type": "NUMBER",
+						"default": "10000",
+						"required": true
+					}
+				]
+			},
+			{
+				"name": "late_payment_fee_configuration",
+				"display_name": "Late Payment Fee Configuration",
+				"description": "Configure penalties when invoices are paid after the due date.",
+				"parameters": [
+					{
+						"name": "late_payment_fee_percentage",
+						"display_name": "Late Payment Fee (%)",
+						"description": "Penalty percentage added to overdue invoice balances",
+						"type": "NUMBER",
+						"default": "1.5",
+						"required": true
+					}
+				]
+			}
+		]
+	}
+}

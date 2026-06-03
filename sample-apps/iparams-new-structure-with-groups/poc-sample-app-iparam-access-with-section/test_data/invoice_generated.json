@@ -1,0 +1,112 @@
+{
+    "api_version": "v2",
+    "content": {
+        "invoice": {
+            "adjustment_credit_notes": [],
+            "amount_adjusted": 0,
+            "amount_due": 0,
+            "amount_paid": 0,
+            "amount_to_collect": 0,
+            "applied_credits": [],
+            "base_currency_code": "USD",
+            "billing_address": {
+                "company": "Example",
+                "country": "US",
+                "first_name": "John",
+                "last_name": "Doe",
+                "object": "billing_address",
+                "validation_status": "not_validated"
+            },
+            "channel": "web",
+            "credits_applied": 0,
+            "currency_code": "USD",
+            "customer_id": "AzqUAXUuVzllT3Zr",
+            "date": 1755783502,
+            "deleted": false,
+            "due_date": 1755783502,
+            "dunning_attempts": [],
+            "exchange_rate": 1,
+            "first_invoice": true,
+            "generated_at": 1755783502,
+            "has_advance_charges": false,
+            "id": "93",
+            "is_gifted": false,
+            "issued_credit_notes": [],
+            "line_items": [
+                {
+                    "amount": 0,
+                    "customer_id": "AzqUAXUuVzllT3Zr",
+                    "date_from": 1755783502,
+                    "date_to": 1758461902,
+                    "description": "Plan-Free",
+                    "discount_amount": 0,
+                    "entity_id": "cbdemo_free",
+                    "entity_type": "plan",
+                    "id": "li_AzZTN3UuW0e4m3il",
+                    "is_taxed": false,
+                    "item_level_discount_amount": 0,
+                    "object": "line_item",
+                    "pricing_model": "flat_fee",
+                    "quantity": 1,
+                    "subscription_id": "AzZTN3UuW0e4B3ij",
+                    "tax_amount": 0,
+                    "tax_exempt_reason": "tax_not_configured",
+                    "unit_amount": 0
+                }
+            ],
+            "linked_orders": [],
+            "linked_payments": [],
+            "net_term_days": 0,
+            "new_sales_amount": 0,
+            "object": "invoice",
+            "paid_at": 1755783502,
+            "price_type": "tax_exclusive",
+            "recurring": true,
+            "resource_version": 1755783502991,
+            "round_off_amount": 0,
+            "site_details_at_creation": {
+                "organization_address": {
+                    "city": "Hyderabad",
+                    "country_code": "IN",
+                    "line1": "asfdgdhfjgfgf",
+                    "organization_name": "Chargebee",
+                    "phone": "01234565543",
+                    "state": "Andaman and Nicobar Islands",
+                    "state_code": "AN",
+                    "zip": "500028"
+                },
+                "timezone": "Universal"
+            },
+            "status": "paid",
+            "sub_total": 0,
+            "subscription_id": "AzZTN3UuW0e4B3ij",
+            "tax": 0,
+            "tax_origin": {
+                "country": "IN"
+            },
+            "term_finalized": true,
+            "total": 0,
+            "updated_at": 1755783502,
+            "write_off_amount": 0
+        }
+    },
+    "event_type": "invoice_generated",
+    "id": "ev_AzZTN3UuW0e7G3in",
+    "object": "event",
+    "occurred_at": 1755783503,
+    "source": "admin_console",
+    "user": "manideep@chargebee.com",
+    "webhook_status": "scheduled",
+    "webhooks": [
+        {
+            "id": "whv2_AzZX7CUVnj5rB1ZHq",
+            "object": "webhook",
+            "webhook_status": "disabled"
+        },
+        {
+            "id": "whv2_169zTyUkn2tgg2fOQ",
+            "object": "webhook",
+            "webhook_status": "scheduled"
+        }
+    ]
+}

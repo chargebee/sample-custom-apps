@@ -1,0 +1,9 @@
+{
+	"processing_fee_configuration": {
+		"fee_percentage": 3,
+		"fee_limit": 10000
+	},
+	"late_payment_fee_configuration": {
+		"fee_percentage": 1.5
+	}
+}
