@@ -1,8 +1,6 @@
-# Schedule Advance Invoice on Subscription Created (v2)
+# Schedule Advance Invoice on Subscription Created
 
 This sample app listens for Chargebee `subscription_created` events and schedules advance invoices using the Chargebee API.
-
-It uses the **section-based iparam structure** introduced in marketplace v2.
 
 ## What this app does
 
@@ -14,14 +12,6 @@ It uses the **section-based iparam structure** introduced in marketplace v2.
 - Schedules future renewals with one of two modes:
   - `fixed` -> fixed intervals before renewal (`fixed_intervals`)
   - `specific` -> specific date (`specific_dates`)
-
-## Iparams: v1 vs v2
-
-| | v1 (flat array) | v2 (this app) |
-|---|---|---|
-| `iparams.json` | Flat parameter array | `installation_parameters.sections` |
-| Handler access | `payload.iparams.schedule_type` | `payload.iparams.advance_invoice_configuration.schedule_type` |
-| `iparams.local.json` | Flat keys | Nested by section name |
 
 ## Event to handler mapping
 
