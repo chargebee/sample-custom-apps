@@ -1,9 +1,12 @@
 'use strict';
 
 /**
- * Chargebee Node SDK client for this app.
- * Host suffix comes from iparams (`advance_invoice_configuration.api_host_suffix`) so tenants can target the correct Chargebee API host.
+
+/**
+ * Serverless function handlers
+ * Each handler receives a single payload argument with payload.event and payload.iparams.<section>.<param>
  */
+
 const Chargebee = require('chargebee');
 
 /** @param {string} hostSuffix */

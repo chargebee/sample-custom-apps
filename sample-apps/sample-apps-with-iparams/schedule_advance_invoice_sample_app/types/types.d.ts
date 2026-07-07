@@ -45,7 +45,7 @@ export interface SectionObject {
 /**
  * Installation parameter values keyed by section name.
  * Access: payload.iparams.<section_name>.<param_name>
- * Example: { "advance_invoice_configuration": { "schedule_type": "fixed" } }
+ * Example: { "chargebee_api_configuration": { "api_host_suffix": ".devcb.in" }, "advance_invoice_configuration": { "schedule_type": "fixed" } }
  */
 export interface IparamInputs {
 	[sectionName: string]: SectionObject;

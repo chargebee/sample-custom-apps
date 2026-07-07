@@ -1,9 +1,11 @@
 {
+	"chargebee_api_configuration": {
+		"api_host_suffix": ".devcb.in"
+	},
 	"advance_invoice_configuration": {
-		"api_host_suffix": ".devcb.in",
 		"schedule_type": "specific",
 		"days_before_renewal": 7,
 		"terms_to_charge": 1,
-		"specific_invoice_date": "2026-09-15"
+		"specific_invoice_date": "2026-11-15"
 	}
 }

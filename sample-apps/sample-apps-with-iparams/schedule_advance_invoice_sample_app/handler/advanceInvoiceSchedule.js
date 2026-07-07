@@ -7,11 +7,12 @@ const { createChargebeeClient } = require('./chargebeeClient');
  */
 async function scheduleAdvanceInvoice(payload) {
 	const eventContent = payload.event.content;
-	const config = payload.iparams.advance_invoice_configuration;
-	const chargebee = createChargebeeClient(config.api_host_suffix);
-	const selectedScheduleType = config.schedule_type;
+	const apiConfig = payload.iparams.chargebee_api_configuration;
+	const invoiceConfig = payload.iparams.advance_invoice_configuration;
+	const chargebee = createChargebeeClient(apiConfig.api_host_suffix);
+	const selectedScheduleType = invoiceConfig.schedule_type;
 
-	if (selectedScheduleType === 'specific' && !config.specific_invoice_date) {
+	if (selectedScheduleType === 'specific' && !invoiceConfig.specific_invoice_date) {
 		throw new Error('specific_invoice_date is required when schedule_type is specific');
 	}
 
@@ -19,9 +20,9 @@ async function scheduleAdvanceInvoice(payload) {
 	if (selectedScheduleType === 'fixed') {
 		params = {
 			schedule_type: 'fixed_intervals',
-			terms_to_charge: config.terms_to_charge,
+			terms_to_charge: invoiceConfig.terms_to_charge,
 			fixed_interval_schedule: {
-				days_before_renewal: config.days_before_renewal,
+				days_before_renewal: invoiceConfig.days_before_renewal,
 				end_schedule_on: 'subscription_end',
 			},
 		};
@@ -30,8 +31,8 @@ async function scheduleAdvanceInvoice(payload) {
 			schedule_type: 'specific_dates',
 			specific_dates_schedule: [
 				{
-					date: toUnixUtc(config.specific_invoice_date),
-					terms_to_charge: config.terms_to_charge,
+					date: toUnixUtc(invoiceConfig.specific_invoice_date),
+					terms_to_charge: invoiceConfig.terms_to_charge,
 				},
 			],
 		};
