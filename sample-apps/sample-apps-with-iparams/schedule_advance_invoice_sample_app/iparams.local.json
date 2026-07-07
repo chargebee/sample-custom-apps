@@ -1,7 +1,9 @@
 {
-	"api_host_suffix": ".devcb.in",
-	"schedule_type": "specific",
-	"days_before_renewal": 7,
-	"terms_to_charge": 1,
-	"specific_invoice_date": "2026-06-15"
+	"advance_invoice_configuration": {
+		"api_host_suffix": ".devcb.in",
+		"schedule_type": "specific",
+		"days_before_renewal": 7,
+		"terms_to_charge": 1,
+		"specific_invoice_date": "2026-09-15"
+	}
 }

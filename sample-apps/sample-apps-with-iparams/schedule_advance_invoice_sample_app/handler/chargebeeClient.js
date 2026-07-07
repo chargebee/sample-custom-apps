@@ -2,7 +2,7 @@
 
 /**
  * Chargebee Node SDK client for this app.
- * Host suffix comes from iparams (`api_host_suffix`) so tenants can target the correct Chargebee API host.
+ * Host suffix comes from iparams (`advance_invoice_configuration.api_host_suffix`) so tenants can target the correct Chargebee API host.
  */
 const Chargebee = require('chargebee');
 
