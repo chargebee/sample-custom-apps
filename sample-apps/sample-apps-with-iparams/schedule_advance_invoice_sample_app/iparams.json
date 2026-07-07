@@ -1,41 +1,59 @@
-[
-	{
-		"name": "api_host_suffix",
-		"display_name": "Chargebee API host suffix",
-		"description": "Example: .devcb.in or .chargebee.com. Default is .devcb.in when empty.",
-		"type": "TEXT",
-		"required": false,
-		"default": ".devcb.in"
-	},
-	{
-		"name": "schedule_type",
-		"display_name": "Advance invoice schedule type",
-		"description": "fixed: create invoice a few days before every renewal; specific: create invoice on the exact date you set.",
-		"type": "DROPDOWN",
-		"required": true,
-		"options": ["fixed", "specific"]
-	},
-	{
-		"name": "days_before_renewal",
-		"display_name": "Days before renewal (fixed intervals only)",
-		"description": "How many days before each interval the advance invoice is generated. Ignored when schedule_type is specific.",
-		"type": "NUMBER",
-		"required": false,
-		"default": 7
-	},
-	{
-		"name": "terms_to_charge",
-		"display_name": "Billing cycles per schedule step",
-		"description": "Number of subscription billing cycles covered per advance invoice (minimum 1).",
-		"type": "NUMBER",
-		"required": false,
-		"default": 1
-	},
-	{
-		"name": "specific_invoice_date",
-		"display_name": "Invoice date (specific dates only)",
-		"description": "YYYY-MM-DD for the first specific-date advance invoice. Required when schedule_type is specific; ignored for fixed.",
-		"type": "DATE",
-		"required": false
+{
+	"installation_parameters": {
+		"sections": [
+			{
+				"name": "chargebee_api_configuration",
+				"display_name": "Chargebee API Configuration",
+				"description": "Chargebee API host settings used when calling subscription APIs.",
+				"parameters": [
+					{
+						"name": "api_host_suffix",
+						"display_name": "Chargebee API host suffix",
+						"description": "Example: .devcb.in or .chargebee.com. Default is .devcb.in when empty.",
+						"type": "TEXT",
+						"required": false,
+						"default": ".devcb.in"
+					}
+				]
+			},
+			{
+				"name": "advance_invoice_configuration",
+				"display_name": "Advance Invoice Configuration",
+				"description": "Advance invoice schedule settings applied on subscription_created.",
+				"parameters": [
+					{
+						"name": "schedule_type",
+						"display_name": "Advance invoice schedule type",
+						"description": "fixed: create invoice a few days before every renewal; specific: create invoice on the exact date you set.",
+						"type": "DROPDOWN",
+						"required": true,
+						"options": ["fixed", "specific"]
+					},
+					{
+						"name": "days_before_renewal",
+						"display_name": "Days before renewal (fixed intervals only)",
+						"description": "How many days before each interval the advance invoice is generated. Ignored when schedule_type is specific.",
+						"type": "NUMBER",
+						"required": false,
+						"default": 7
+					},
+					{
+						"name": "terms_to_charge",
+						"display_name": "Billing cycles per schedule step",
+						"description": "Number of subscription billing cycles covered per advance invoice (minimum 1).",
+						"type": "NUMBER",
+						"required": false,
+						"default": 1
+					},
+					{
+						"name": "specific_invoice_date",
+						"display_name": "Invoice date (specific dates only)",
+						"description": "YYYY-MM-DD for the first specific-date advance invoice. Required when schedule_type is specific; ignored for fixed.",
+						"type": "DATE",
+						"required": false
+					}
+				]
+			}
+		]
 	}
-]
+}
