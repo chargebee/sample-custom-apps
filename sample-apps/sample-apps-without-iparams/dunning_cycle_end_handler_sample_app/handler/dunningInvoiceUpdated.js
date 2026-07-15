@@ -29,7 +29,9 @@ async function handleInvoiceUpdated(payload) {
 		throw new Error('no subscription_id in event');
 	}
 
-	const chargebee = createChargebeeClient();
+	const site = String(process.env['CB_APPS_SITE_DOMAIN'] || '').trim();
+	const apiKey = process.env['CB_APPS_READ_WRITE_API'];
+	const chargebee = createChargebeeClient(site, apiKey);
 
 	if (DUNNING_EXHAUSTED_ACTION === 'pause') {
 		await pauseSubscription(chargebee, subId);

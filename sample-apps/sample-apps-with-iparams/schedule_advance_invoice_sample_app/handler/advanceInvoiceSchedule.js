@@ -9,7 +9,9 @@ async function scheduleAdvanceInvoice(payload) {
 	const eventContent = payload.event.content;
 	const apiConfig = payload.iparams.chargebee_api_configuration;
 	const invoiceConfig = payload.iparams.advance_invoice_configuration;
-	const chargebee = createChargebeeClient(apiConfig.api_host_suffix);
+	const site = process.env['CB_APPS_SITE_DOMAIN'];
+	const apiKey = process.env['CB_APPS_READ_WRITE_API'];
+	const chargebee = createChargebeeClient(site, apiKey, apiConfig.api_host_suffix);
 	const selectedScheduleType = invoiceConfig.schedule_type;
 
 	if (selectedScheduleType === 'specific' && !invoiceConfig.specific_invoice_date) {
