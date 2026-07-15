@@ -64,9 +64,9 @@ Local values in `iparams.local.json` are keyed by section name:
 
 For local runs, set these in `.env`:
 
-- `MKPLC_CB_READ_ONLY_API`
-- `MKPLC_CB_READ_WRITE_API`
-- `MKPLC_SITE_DOMAIN`
+- `CB_APPS_READ_ONLY_API`
+- `CB_APPS_READ_WRITE_API`
+- `CB_APPS_SITE_DOMAIN`
 
 ## Local testing
 
@@ -75,7 +75,7 @@ For local runs, set these in `.env`:
 3. Run:
 
 ```bash
-apps run <app_dir>
+chargebee-apps run <app_dir>
 ```
 
 4. Open `http://localhost:15000`

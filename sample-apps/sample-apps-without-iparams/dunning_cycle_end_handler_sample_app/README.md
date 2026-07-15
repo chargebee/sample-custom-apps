@@ -39,9 +39,9 @@ This app does not use `iparams`.
 
 For local runs, set these in `.env`:
 
-- `MKPLC_CB_READ_ONLY_API`
-- `MKPLC_CB_READ_WRITE_API`
-- `MKPLC_SITE_DOMAIN`
+- `CB_APPS_READ_ONLY_API`
+- `CB_APPS_READ_WRITE_API`
+- `CB_APPS_SITE_DOMAIN`
 
 API host suffix is currently hardcoded as `.devcb.in` in `handler/chargebeeClient.js`.
 
@@ -51,7 +51,7 @@ API host suffix is currently hardcoded as `.devcb.in` in `handler/chargebeeClien
 2. Run:
 
 ```bash
-apps run .
+chargebee-apps run .
 ```
 
 3. Open `http://localhost:15000`

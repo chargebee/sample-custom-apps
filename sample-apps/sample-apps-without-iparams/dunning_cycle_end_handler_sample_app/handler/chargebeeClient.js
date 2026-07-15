@@ -10,12 +10,13 @@ const Chargebee = require('chargebee');
  */
 const API_HOST_SUFFIX = '.devcb.in';
 
-function createChargebeeClient() {
-	// These are injected automatically in production; for local development use `.env`.
-	const site = String(process.env['MKPLC_SITE_DOMAIN'] || '').trim();
-	const apiKey = process.env['MKPLC_CB_READ_WRITE_API'];
+/**
+ * @param {string} site
+ * @param {string} apiKey
+ */
+function createChargebeeClient(site, apiKey) {
 	if (!site || !apiKey) {
-		throw new Error('Missing MKPLC_SITE_DOMAIN or MKPLC_CB_READ_WRITE_API');
+		throw new Error('Missing CB_APPS_SITE_DOMAIN or CB_APPS_READ_WRITE_API');
 	}
 	return new Chargebee({
 		site,

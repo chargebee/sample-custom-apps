@@ -13,8 +13,10 @@ const DUNNING_EXHAUSTED_ACTION = 'cancel';
 
 /**
  * @param {import('../types/types').HandlerPayload} payload
+ * @param {string} site
+ * @param {string} apiKey
  */
-async function handleInvoiceUpdated(payload) {
+async function handleInvoiceUpdated(payload, site, apiKey) {
 	const eventContent = payload.event.content;
 
 	// Most `invoice_updated` events are irrelevant; only act when dunning has given up on this invoice.
@@ -29,7 +31,7 @@ async function handleInvoiceUpdated(payload) {
 		throw new Error('no subscription_id in event');
 	}
 
-	const chargebee = createChargebeeClient();
+	const chargebee = createChargebeeClient(site, apiKey);
 
 	if (DUNNING_EXHAUSTED_ACTION === 'pause') {
 		await pauseSubscription(chargebee, subId);

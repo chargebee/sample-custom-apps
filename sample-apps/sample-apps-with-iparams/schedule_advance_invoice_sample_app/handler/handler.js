@@ -15,7 +15,9 @@ module.exports = {
 	subscriptionCreatedHandler: async function (payload) {
 		console.log('Processing subscription_created event');
 		try {
-			await scheduleAdvanceInvoice(payload);
+			const site = process.env['CB_APPS_SITE_DOMAIN'];
+			const apiKey = process.env['CB_APPS_READ_WRITE_API'];
+			await scheduleAdvanceInvoice(payload, site, apiKey);
 		} catch (error) {
 			throw new Error(error.message);
 		}

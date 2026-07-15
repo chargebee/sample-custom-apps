@@ -6,8 +6,8 @@ This sample app listens for Chargebee `subscription_created` events and schedule
 
 - Triggers on `subscription_created`
 - Builds a Chargebee client using:
-  - `MKPLC_SITE_DOMAIN`
-  - `MKPLC_CB_READ_WRITE_API`
+  - `CB_APPS_SITE_DOMAIN`
+  - `CB_APPS_READ_WRITE_API`
   - `api_host_suffix` from `payload.iparams.chargebee_api_configuration`
 - Schedules future renewals with one of two modes:
   - `fixed` -> fixed intervals before renewal (`fixed_intervals`)
@@ -63,9 +63,9 @@ Local values in `iparams.local.json` are keyed by section name:
 
 For local runs, set these in `.env`:
 
-- `MKPLC_CB_READ_ONLY_API`
-- `MKPLC_CB_READ_WRITE_API`
-- `MKPLC_SITE_DOMAIN`
+- `CB_APPS_READ_ONLY_API`
+- `CB_APPS_READ_WRITE_API`
+- `CB_APPS_SITE_DOMAIN`
 
 ## Local testing
 
@@ -78,7 +78,7 @@ For local runs, set these in `.env`:
 3. Run:
 
 ```bash
-apps run <app_dir>
+chargebee-apps run <app_dir>
 ```
 
 4. Open `http://localhost:15000`
