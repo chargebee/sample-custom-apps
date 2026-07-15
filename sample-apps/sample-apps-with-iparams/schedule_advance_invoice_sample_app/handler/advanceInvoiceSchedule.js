@@ -4,13 +4,13 @@ const { createChargebeeClient } = require('./chargebeeClient');
 
 /**
  * @param {import('../types/types.d.ts').HandlerPayload} payload
+ * @param {string} site
+ * @param {string} apiKey
  */
-async function scheduleAdvanceInvoice(payload) {
+async function scheduleAdvanceInvoice(payload, site, apiKey) {
 	const eventContent = payload.event.content;
 	const apiConfig = payload.iparams.chargebee_api_configuration;
 	const invoiceConfig = payload.iparams.advance_invoice_configuration;
-	const site = process.env['CB_APPS_SITE_DOMAIN'];
-	const apiKey = process.env['CB_APPS_READ_WRITE_API'];
 	const chargebee = createChargebeeClient(site, apiKey, apiConfig.api_host_suffix);
 	const selectedScheduleType = invoiceConfig.schedule_type;
 
