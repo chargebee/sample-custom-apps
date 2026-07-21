@@ -6,9 +6,9 @@ This sample app listens for Chargebee `subscription_created` events and schedule
 
 - Triggers on `subscription_created`
 - Builds a Chargebee client using:
-  - `MKPLC_SITE_DOMAIN`
-  - `MKPLC_CB_READ_WRITE_API`
-  - `api_host_suffix` from `iparams`
+  - `CB_APPS_SITE_DOMAIN`
+  - `CB_APPS_READ_WRITE_API`
+  - `api_host_suffix` from `payload.iparams.chargebee_api_configuration`
 - Schedules future renewals with one of two modes:
   - `fixed` -> fixed intervals before renewal (`fixed_intervals`)
   - `specific` -> specific date (`specific_dates`)
@@ -23,7 +23,7 @@ Handler flow:
 
 1. `handler/handler.js` receives payload
 2. Calls `scheduleAdvanceInvoice(payload)` from `handler/advanceInvoiceSchedule.js`
-3. Reads scheduling mode from `iparams`
+3. Reads API host from `chargebee_api_configuration` and schedule settings from `advance_invoice_configuration`
 4. Calls `chargebee.subscription.chargeFutureRenewals(...)`
 
 ## Required configuration
@@ -32,30 +32,53 @@ Handler flow:
 
 Defined in `iparams.json`:
 
+**`chargebee_api_configuration`**
+
 - `api_host_suffix` (`TEXT`, default `.devcb.in`)
+
+**`advance_invoice_configuration`**
+
 - `schedule_type` (`DROPDOWN`, required): `fixed` or `specific`
 - `days_before_renewal` (`NUMBER`, default `7`) - used for `fixed`
 - `terms_to_charge` (`NUMBER`, default `1`)
 - `specific_invoice_date` (`DATE`) - required when `schedule_type=specific`
 
+Local values in `iparams.local.json` are keyed by section name:
+
+```json
+{
+  "chargebee_api_configuration": {
+    "api_host_suffix": ".devcb.in"
+  },
+  "advance_invoice_configuration": {
+    "schedule_type": "specific",
+    "days_before_renewal": 7,
+    "terms_to_charge": 1,
+    "specific_invoice_date": "2026-06-15"
+  }
+}
+```
+
 ### System env vars
 
 For local runs, set these in `.env`:
 
-- `MKPLC_CB_READ_ONLY_API`
-- `MKPLC_CB_READ_WRITE_API`
-- `MKPLC_SITE_DOMAIN`
+- `CB_APPS_READ_ONLY_API`
+- `CB_APPS_READ_WRITE_API`
+- `CB_APPS_SITE_DOMAIN`
 
 ## Local testing
 
 1. Fill `.env` with Chargebee credentials
 2. Configure `iparams.local.json`:
-   - For fixed schedule: set `schedule_type` to `fixed`
-   - For specific schedule: set `schedule_type` to `specific` and provide `specific_invoice_date`
+   - Set `chargebee_api_configuration.api_host_suffix` if needed
+   - Under `advance_invoice_configuration`:
+     - For fixed schedule: set `schedule_type` to `fixed`
+     - For specific schedule: set `schedule_type` to `specific` and provide `specific_invoice_date`
 3. Run:
 
 ```bash
-apps run <app_dir>
+chargebee-apps run <app_dir>
 ```
 
 4. Open `http://localhost:15000`

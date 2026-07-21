@@ -2,16 +2,15 @@
 
 /**
  * Serverless function handlers
- * Each handler receives a single payload argument with payload.event and payload.iparams
+ * Each handler receives a single payload argument with payload.event and payload.iparams.<section>.<param>
  */
-
 
 const { postLeadToCrm } = require('./crmLead');
 
 module.exports = {
 	/**
-   * Handles customer_created events
-   * @param {import('../types/types').HandlerPayload} payload - Event and iparams
+	 * Handles customer_created events
+	 * @param {import('../types/types').HandlerPayload} payload - Event and iparams
 	 */
 	customerCreatedHandler: async function (payload) {
 		try {
