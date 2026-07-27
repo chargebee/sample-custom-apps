@@ -30,7 +30,11 @@ async function postLeadToCrm(payload) {
 	};
 	const res = await fetch(crmIntegration.crm_webhook_url.trim(), { method: 'POST', headers, body: JSON.stringify(body) });
 	const text = await res.text();
-	if (!res.ok) throw new Error(`HubSpot contact create failed ${res.status}: ${text.slice(0, 500)}`);
+	if (!res.ok) {
+		const err = new Error(`HubSpot contact create failed ${res.status}: ${text.slice(0, 500)}`);
+		err.statusCode = res.status;
+		throw err;
+	}
 	console.log('[crm-lead-sample] HubSpot contact create success; status=', res.status);
 }
 
