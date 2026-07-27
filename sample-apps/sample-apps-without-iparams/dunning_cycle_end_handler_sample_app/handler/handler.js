@@ -13,13 +13,20 @@ module.exports = {
 	 * @returns {Promise<import('../types/types').HandlerResult | void>}
 	 */
 	invoiceUpdatedHandler: async function (payload) {
-		const subscriptionId = payload.event.content?.invoice?.subscription_id;
+		const eventContent = payload.event.content;
+		const dunningStatus = eventContent?.invoice?.dunning_status || eventContent?.transaction?.dunning_status;
+		// Non-exhausted events are not actionable — ack silently without retrying.
+		if (dunningStatus !== 'exhausted') {
+			return;
+		}
+		// Mirrors the fallback in handleInvoiceUpdated: invoice.subscription_id, then subscription.id.
+		const subscriptionId = eventContent?.invoice?.subscription_id || eventContent?.subscription?.id;
 		// One-time invoices are not linked to a subscription — nothing to pause or cancel.
 		// Return 4xx to signal a non-retryable skip — the platform will NOT retry.
 		if (!subscriptionId) {
 			return {
 				statusCode: 400,
-				body: JSON.stringify({ message: 'Invoice is not linked to a subscription; skipping dunning action' }),
+				body: JSON.stringify({ message: 'Exhausted dunning invoice has no linked subscription; skipping dunning action' }),
 			};
 		}
 		try {
@@ -29,7 +36,7 @@ module.exports = {
 			console.log('Dunning exhaustion handled successfully');
 		} catch (error) {
 			// Throw to signal a transient failure — the platform WILL retry (treated as 5xx).
-			throw new Error(error.message);
+			throw error;
 		}
 	},
 };

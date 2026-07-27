@@ -52,7 +52,7 @@ async function scheduleAdvanceInvoice(payload, site, apiKey) {
 				message: err.message,
 				subscription_id: eventContent.subscription.id,
 			});
-			return;
+			return { statusCode: status, body: JSON.stringify({ message: err.message, api_error_code: err.api_error_code }) };
 		}
 		throw err;
 	}

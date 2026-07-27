@@ -26,10 +26,10 @@ module.exports = {
 		try {
 			const site = process.env['CB_APPS_SITE_DOMAIN'];
 			const apiKey = process.env['CB_APPS_READ_WRITE_API'];
-			await scheduleAdvanceInvoice(payload, site, apiKey);
+			return await scheduleAdvanceInvoice(payload, site, apiKey);
 		} catch (error) {
 			// Throw to signal a transient failure — the platform WILL retry (treated as 5xx).
-			throw new Error(error.message);
+			throw error;
 		}
 	},
 };
