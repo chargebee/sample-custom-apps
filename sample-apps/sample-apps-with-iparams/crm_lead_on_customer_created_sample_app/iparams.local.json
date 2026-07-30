@@ -1,6 +1,6 @@
 {
 	"crm_integration": {
 		"crm_webhook_url": "https://api.hubapi.com/crm/v3/objects/contacts",
-		"crm_auth_token": "REPLACE_WITH_YOUR_HUBSPOT_PRIVATE_APP_TOKEN"
+		"secret": "token_952f2d2-4321-4fe9-b9f4-895f67428e16"
 	}
 }
