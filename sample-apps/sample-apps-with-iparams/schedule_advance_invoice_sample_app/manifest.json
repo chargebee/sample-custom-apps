@@ -1,4 +1,7 @@
 {
+	"name": "gb-test-app",
+	"description": "just a test app",
+	"github_url": "<your-github-repo-url>",
 	"dependencies": {
 		"chargebee": "3.0.0"
 	},
