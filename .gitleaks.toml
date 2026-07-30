@@ -1,0 +1,6 @@
+# Extend the built-in Gitleaks ruleset.
+# An empty config (or a config without useDefault) disables ALL detection rules.
+title = "cb-marketplace-sample-app"
+
+[extend]
+useDefault = true
