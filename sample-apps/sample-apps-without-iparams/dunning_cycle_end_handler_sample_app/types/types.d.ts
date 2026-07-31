@@ -43,3 +43,23 @@ export interface EventRecord {
 export interface HandlerPayload {
 	event: EventRecord;
 }
+
+/**
+ * Optional return value from a handler function.
+ *
+ * Return this when the handler wants to signal an application-level error
+ * WITHOUT triggering a platform retry (e.g. invalid input, business rule
+ * violation). Throwing an exception causes the platform to retry the event;
+ * returning a HandlerResult with statusCode >= 400 does not.
+ *
+ * If the handler returns nothing (or undefined), statusCode defaults to 200.
+ */
+export interface HandlerResult {
+	/**
+	 * HTTP status code (100–599). Defaults to 200 if omitted.
+	 * Return 4xx to signal a non-retryable application error.
+	 */
+	statusCode?: number;
+	/** Optional response body (e.g. a JSON-encoded error message). */
+	body?: string;
+}
