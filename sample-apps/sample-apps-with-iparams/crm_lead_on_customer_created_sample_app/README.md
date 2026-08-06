@@ -2,7 +2,7 @@
 
 This sample app listens for Chargebee `customer_created` events and creates a lead/contact in HubSpot using the Contacts API.
 
-It mirrors `crm_lead_on_customer_created_sample_app` but uses the **section-based iparam structure** introduced in marketplace v2.
+It mirrors `crm_lead_on_customer_created_sample_app` but uses the **section-based iparam structure**.
 
 ## What this app does
 

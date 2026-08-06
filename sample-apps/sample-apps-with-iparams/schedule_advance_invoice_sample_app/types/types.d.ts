@@ -1,6 +1,6 @@
 /**
- * Type definitions for Chargebee Marketplace applications
- * This file provides TypeScript types for common structures used in marketplace applications
+ * Type definitions for chargebee-apps applications
+ * This file provides TypeScript types for common structures used in Chargebee apps
  */
 
 /**

@@ -1,6 +1,6 @@
-# Marketplace Sample Apps
+# Sample Custom Apps
 
-This repository contains example serverless marketplace apps.
+This repository contains sample apps for building custom apps using the [chargebee-apps](https://www.npmjs.com/package/@chargebee/chargebee-apps) CLI.
 
 ## Quick start
 

@@ -19,7 +19,7 @@ SOURCE_BRANCH="${1:-$(git branch --show-current)}"
 DATE_FILTER="${2:-merged:>=$(date -u -v-30d +%Y-%m-%d 2>/dev/null || date -u -d '30 days ago' +%Y-%m-%d)}"
 
 # Repo is set per-repo when this file is pushed (placeholder replaced by upload script)
-REPO="chargebee/cb-marketplace-sample-app"
+REPO="chargebee/sample-custom-apps"
 
 echo "🔍 Searching for PRs merged into $SOURCE_BRANCH..."
 
