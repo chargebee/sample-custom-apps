@@ -1,0 +1,23 @@
+{
+  "id": "evt_sample_cust_001",
+  "api_version": "v2",
+  "object": "event",
+  "occurred_at": 1700000000,
+  "source": "api",
+  "webhook_status": "success",
+  "webhooks": [],
+  "event_type": "customer_created",
+  "content": {
+    "customer": {
+      "id": "cust_sample_001",
+      "email": "alex.sample@example.com",
+      "first_name": "Alex",
+      "last_name": "Sample",
+      "phone": "+1-555-0100",
+      "company": "Example Corp",
+      "created_at": 1700000000,
+      "updated_at": 1700000000,
+      "object": "customer"
+    }
+  }
+}

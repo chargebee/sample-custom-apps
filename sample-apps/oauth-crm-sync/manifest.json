@@ -1,0 +1,14 @@
+{
+  "name": "oauth-crm-sync",
+  "version": "1.0.0",
+  "description": "Sample app: syncs Chargebee customer and subscription events to a CRM via OAuth 2.0.",
+  "events": {
+    "customer_created": {
+      "handler": "onCustomerCreated"
+    },
+    "subscription_created": {
+      "handler": "onSubscriptionCreated"
+    }
+  },
+  "dependencies": {}
+}
