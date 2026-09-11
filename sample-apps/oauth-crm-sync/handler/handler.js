@@ -2,14 +2,14 @@
  * oauth-crm-sync — sample app demonstrating OAuth 2.0 token usage.
  *
  * How OAuth tokens reach this handler:
- *   1. Add your OAuth credentials to oauth_config.json.
+ *   1. Add your OAuth credentials to oauth_configs.json.
  *   2. Open the tester UI (cb-apps run), click the OAuth tab, and click Connect.
  *   3. After authorizing, tokens are encrypted and saved locally.
  *   4. On every invocation, the CLI decrypts the token and injects it as
  *      payload.oauth_token["hubspot"].access_token (Bearer token ready to use).
  *
  * Available in payload.oauth_token only when:
- *   - oauth_config.json exists in the app directory, AND
+ *   - oauth_configs.json exists in the app directory, AND
  *   - the connector has been authorized via the tester UI
  */
 

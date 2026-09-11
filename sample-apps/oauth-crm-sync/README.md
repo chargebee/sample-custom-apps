@@ -15,7 +15,7 @@ Listens to `customer_created` and `subscription_created` events, then syncs the 
 
 ### 2. Configure credentials
 
-Edit `oauth_config.json` and replace the placeholder values:
+Edit `oauth_configs.json` and replace the placeholder values:
 
 ```json
 {
@@ -66,7 +66,7 @@ Open `http://localhost:10101` in your browser.
 | File | Purpose |
 |------|---------|
 | `manifest.json` | App metadata and event-to-handler mapping |
-| `oauth_config.json` | OAuth connector credentials (fill in your client_id/secret) |
+| `oauth_configs.json` | OAuth connector credentials (fill in your client_id/secret) |
 | `handler/handler.js` | Event handler code |
 | `test_data/` | Sample payloads for local testing |
 | `types/types.d.ts` | TypeScript type hints for the handler payload |
