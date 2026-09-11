@@ -1,0 +1,13 @@
+{
+  "connectors": {
+    "hubspot": {
+      "client_id": "<YOUR_HUBSPOT_CLIENT_ID>",
+      "client_secret": "<YOUR_HUBSPOT_CLIENT_SECRET>",
+      "authorize_url": "https://app.hubspot.com/oauth/authorize",
+      "token_url": "https://api.hubapi.com/oauth/v1/token",
+      "options": {
+        "scope": "crm.objects.contacts.read crm.objects.contacts.write"
+      }
+    }
+  }
+}
