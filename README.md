@@ -21,3 +21,7 @@ chargebee-apps run <app_dir>
 5. Open `http://localhost:15000` and trigger events using the provided `test_data`.
 
 `manifest.json` includes an `engines` object. `chargebee-apps create` and `chargebee-apps package` overwrite `engines.node` and `engines.chargebee_apps` with the Node.js and CLI versions on your machine. Do not edit those keys by hand.
+
+## AI agents
+
+This repo includes an [app-review](.agents/skills/app-review/SKILL.md) skill for reviewing a sample custom app.
