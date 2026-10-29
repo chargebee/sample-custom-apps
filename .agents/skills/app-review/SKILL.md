@@ -6,7 +6,7 @@ argument-hint: <path-to-app-directory>
 
 # App Review
 
-Review a sample custom app package against seven fixed dimensions. The target
+Review a sample custom app against seven fixed dimensions. The target
 is always a directory containing `manifest.json` and a `handler/` folder
 (one or more `*.js` files). If given a `.zip`, unzip it to a scratch dir
 first.
@@ -24,7 +24,7 @@ first.
    Don't flag something as wrong without pointing at the exact line.
 5. Report back organized under the seven headings, in prose/bullets (not via
    the ReportFindings tool — that's for the /code-review skill's diff review,
-   not app packages). End with a short "priority fix" callout if anything
+   not apps). End with a short "priority fix" callout if anything
    is severe.
 
 ## The seven dimensions
